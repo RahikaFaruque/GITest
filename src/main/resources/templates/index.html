@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Home Page</title>
+</head>
+<body>
+	<form method="post" action="#" th:action="@{/filtered}" th:object=${filterCharacter}>
+		Weapon Type: <div th:each="type : ${T(ca.sheridancollege.rahika.data.WeaponType).values()}">
+        <input type="checkbox" 
+               th:field="*{weaponType}" 
+               th:value="${type}" />
+        <label th:for="${#ids.prev('weaponType')}" 
+               th:text="${type.toString().toLowerCase()}">Weapon</label>
+    </div>
+    Element: <div th:each="elem : ${T(ca.sheridancollege.rahika.data.Element).values()}">
+        <input type="checkbox" 
+               th:field="*{element}" 
+               th:value="${elem}" />
+        <label th:for="${#ids.prev('element')}" 
+               th:text="${elem.toString().toLowerCase()}">Element</label>
+    </div>
+	</form>
+</body>
+</html>
